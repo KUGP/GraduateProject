@@ -1,25 +1,14 @@
 # AutoML for Image Semantic Segmentation
-Currently this repo contains the only working open-source implementation of [Auto-Deeplab](https://arxiv.org/abs/1901.02985) which, by the way **out-performs** that of the original paper. 
+Currently this repo contains the only working open-source implementation of [Auto-Deeplab](https://arxiv.org/abs/1901.02985)
 
 
 Following the popular trend of modern CNN architectures having a two level hierarchy. Auto-Deeplab forms a dual level search space, searching for optimal network and cell architecture.
 ![network and cell level search space](./images/networkandcell.png)
 
 
-
-
-Auto-Deeplab acheives a better performance while minimizing the size of the final model.
+Auto-Deeplab performance 
 ![model results](./images/results.png)
 
-Our results:79.8 miou with Autodeeplab-M, train for 4000epochs and batch_size=16, about 800K iters
-<br/><br/>
-Our Search implementation currently achieves **BETTER** results than that of the authors in the original AutoDeeplab paper. Awesome!
-<br/><br/>
-Search results from the auto-deeplab paper which achieve 35% after 40 epochs of searching:    
-![paper mIOU](./images/valmIOUpaper.png)  
-VS our search results which acheive 37% after 40 epochs of searching:    
-![our mIOU](./images/28_40.png):  
-<br/><br/>
 
 ## Training Proceedure
 
@@ -49,13 +38,15 @@ VS our search results which acheive 37% after 40 epochs of searching:
 **Start Training**
 
 ```
-CUDA_VISIBLE_DEVICES=0 python train_autodeeplab.py --dataset cityscapes
+python train_autodeeplab.py --batch-size 8 --dataset <datasetname> --checkname <check_dir_name> --alpha_epoch 2
+0 --filter_multiplier 8 --resize 512 --crop_size 321 --gpu-ids 0,1
 ```
 
 **Resume Training**
 
 ```
-CUDA_VISIBLE_DEVICES=0 python train_autodeeplab.py --dataset cityscapes --resume /AutoDeeplabpath/checkpoint.pth.tar
+python train_autodeeplab.py --batch-size 8 --dataset<datasetname> --checkname <check_dir_name> --alpha_epoch 2
+0 --filter_multiplier 8 --resize 512 --crop_size 321 --gpu-ids 0,1 --resume ./checkpoint.pth.tar
 ```
 
 ## Re-train
@@ -66,24 +57,16 @@ After that just build your new model and begin training it***
 
 **Load and Decode**
 ```
-CUDA_VISIBLE_DEVICES=0 python decode_autodeeplab.py --dataset cityscapes --resume /AutoDeeplabpath/checkpoint.pth.tar
+python decode_autodeeplab.py --dataset <datasetName> --resume ./checkpoint.pth.tar
+
 ```
 
 ## Retrain
 
 **Train without distributed**
 ```
-python train.py
-```
+python train.py --dataset <datasetName> --batch_size 16 --net_arch ./network_path_space.npy --cell_arch ./genotype.npy --network_path ./network_path.npy --checkname <check_dir name>```
 
-**Train with distributed**
-```
-CUDA_VISIBLE_DEVICES=0,1,2,···,n python -m torch.distributed.launch --nproc_per_node=n train_distributed.py  
-```
-
-## Result models
-
-We provided models after search and retrain [[baidu drive (passwd: xm9z)]](https://pan.baidu.com/s/1gt8wnMhqfNOsEVg0gdaWMw) [[google drive]]()
 
 ## Requirements
 
@@ -116,8 +99,4 @@ We provided models after search and retrain [[baidu drive (passwd: xm9z)]](https
 
 [5] : [Thanks for chenxi's deeplab v3 implemention of pytorch](https://github.com/chenxi116/DeepLabv3.pytorch)
 
-## TODO
-
-* Retrain our search model
-
-* adding support for other datasets(e.g. VOC, ADE20K, COCO and so on.)
+[6] : [https://github.com/NoamRosenberg/autodeeplab] 
