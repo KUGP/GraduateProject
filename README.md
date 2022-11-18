@@ -1,13 +1,25 @@
-# AutoML for Image Semantic Segmentation
-Currently this repo contains the only working open-source implementation of [Auto-Deeplab](https://arxiv.org/abs/1901.02985)
+# Graduate Project : Night-time data Neural Architecture Search for image segmentation
+our project is testing Neural Architecture Search with Night-time data image segmentation 
+we had a some question like "is NAS works even night time? and is there any difference between night-time and day-time?" 
+so we did night-time Neural Architecture Search 
+we use [Auto-Deeplab](https://arxiv.org/abs/1901.02985) for NAS Method and we use [NightCity](https://dmcv.sjtu.edu.cn/people/phd/tanxin/NightCity/index.html) for our dataset 
+
+we clone this [repo](https://github.com/NoamRosenberg/autodeeplab) for Auto-Deeplab implementation and we change some code like dataloader or argment file  
 
 
+## Auto-Deeplab search space and search parameter
 Following the popular trend of modern CNN architectures having a two level hierarchy. Auto-Deeplab forms a dual level search space, searching for optimal network and cell architecture.
 ![network and cell level search space](./images/networkandcell.png)
 
 
 Auto-Deeplab performance 
 ![model results](./images/results.png)
+
+## Our Results
+![Our Search Results image of NightCity data](./images/our_search_result.png)
+![Our Results image of NightCity validation](./images/NightCityResult.png)
+![Our performance table of NightCity validation](./images/compare_nightval.png)
+![Our performance table of NightTimeDriving test](./images/compare_nightimedriving_test.png)
 
 
 ## Training Proceedure
