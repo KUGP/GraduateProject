@@ -4,7 +4,7 @@ we had a some question like "is NAS works even night time? and is there any diff
 so we did night-time Neural Architecture Search 
 we use [Auto-Deeplab](https://arxiv.org/abs/1901.02985) for NAS Method and we use [NightCity](https://dmcv.sjtu.edu.cn/people/phd/tanxin/NightCity/index.html) for our dataset 
 
-we clone this [repo](https://github.com/NoamRosenberg/autodeeplab) for Auto-Deeplab implementation and we change some code like dataloader or argment file  
+we clone this [repo](https://github.com/NoamRosenberg/autodeeplab) for base-line of Auto-Deeplab implementation and we change some code like dataloader or argment file  
 
 
 ## Auto-Deeplab search space and search parameter
@@ -18,8 +18,8 @@ Auto-Deeplab performance
 ## Our Results
 ![Our Search Results image of NightCity data](./images/our_search_result.png)
 ![Our Results image of NightCity validation](./images/NightCityResult.png)
-![Our performance table of NightCity validation](./images/compare_nightval.png)
-![Our performance table of NightTimeDriving test](./images/compare_nightimedriving_test.png)
+**Our performance of NightCity validation : 44.2% mIoU** 
+**Our performance of NightTimeDriving test : 31.5% mIoU**
 
 
 ## Training Proceedure
