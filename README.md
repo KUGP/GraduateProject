@@ -65,7 +65,11 @@ python decode_autodeeplab.py --dataset <datasetName> --resume ./checkpoint.pth.t
 
 **Train without distributed**
 ```
-python train.py --dataset <datasetName> --batch_size 16 --net_arch ./network_path_space.npy --cell_arch ./genotype.npy --network_path ./network_path.npy --checkname <check_dir name>```
+python train.py --dataset <datasetName> --batch_size 16 --net_arch ./network_path_space.npy --cell_arch ./genotype.npy --network_path ./network_path.npy --checkname <check_dir name>
+```
+
+
+
 
 
 ## Requirements
@@ -99,4 +103,4 @@ python train.py --dataset <datasetName> --batch_size 16 --net_arch ./network_pat
 
 [5] : [Thanks for chenxi's deeplab v3 implemention of pytorch](https://github.com/chenxi116/DeepLabv3.pytorch)
 
-[6] : [https://github.com/NoamRosenberg/autodeeplab] 
+[6] : [Thanks for NoamRosenberg's autodeeplab implementation of pytorch](https://github.com/NoamRosenberg/autodeeplab) 
